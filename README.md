@@ -1,5 +1,4 @@
--[x] Setup do vanco
--[] Seeding do banco
+-[x] Setup do vanco -[x] Seeding do banco
 -[] Introducao ao Next.js
 -[] Tailwind e Shadcn
 -[] Git Hooks
