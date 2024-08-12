@@ -1,13 +1,14 @@
 import { Input } from "./_components/ui/input"
 import Header from "./_components/header"
 import { Button } from "./_components/ui/button"
-import { EyeIcon, FootprintsIcon, SearchIcon } from "lucide-react"
+import { SearchIcon } from "lucide-react"
 import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
-import { Badge } from "./_components/ui/badge"
-import { Avatar, AvatarImage } from "./_components/ui/avatar"
+
 import { db } from "./_lib/prisma"
 import BarbershopItem from "./_components/barbershop-item"
+import { quickSearchOptions } from "./_constants/search"
+import BookingItem from "./_components/booking-item"
 
 const Home = async () => {
   const barbershops = await db.barbershop.findMany({})
@@ -26,7 +27,6 @@ const Home = async () => {
         {/* TEXTO */}
         <h2>Ola, Miguel!</h2>
         <p className="text-sm">Sexta,2 de fevereito</p>
-
         {/* BUSCA */}
         <div className="mt-6 flex items-center gap-2">
           <Input placeholder="Faça sua busca..." />
@@ -34,39 +34,20 @@ const Home = async () => {
             <SearchIcon></SearchIcon>
           </Button>
         </div>
-
         {/* BUSCA RAPIDA */}
-
         <div className="mt-6 flex gap-3 overflow-auto [&::-webkit-scrollbar]:hidden">
-          <Button variant="secondary" className="gap-2">
-            <Image alt="Cabelo" width={16} height={16} src="/cabelo.svg" />
-            Cabelo
-          </Button>
-
-          <Button variant="secondary" className="gap-2">
-            <FootprintsIcon width={16} height={16} />
-            Pezinho
-          </Button>
-
-          <Button variant="secondary" className="gap-2">
-            <Image alt="Barba" width={16} height={16} src="/barba.svg" />
-            Barba
-          </Button>
-          <Button variant="secondary" className="gap-2">
-            <Image
-              alt="acabamento"
-              width={16}
-              height={16}
-              src="/acabamento.svg"
-            />
-            acabamento
-          </Button>
-          <Button variant="secondary" className="gap-2">
-            <EyeIcon width={16} height={16} />
-            Sobrancelha
-          </Button>
+          {quickSearchOptions.map((option) => (
+            <Button variant="secondary" className="gap-2" key={option.title}>
+              <Image
+                src={option.imageUrl}
+                alt={option.title}
+                width={16}
+                height={16}
+              />
+              {option.title}
+            </Button>
+          ))}
         </div>
-
         {/* IMAGEM */}
         <div className="relative mt-6 h-[150px] w-full">
           <Image
@@ -76,35 +57,12 @@ const Home = async () => {
             className="rounded-xl object-cover"
           />
         </div>
-
         {/* AGENDAMENTO */}
+
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Agendamentos
         </h2>
-        <Card>
-          <CardContent className="flex items-center justify-between p-0">
-            {/* ESQUERDA */}
-            <div className="flex flex-col gap-2 py-5 pl-5">
-              <Badge className="w-fit">Confirmado</Badge>
-              <h3 className="font-semibold">Corte de Cabelo</h3>
-
-              <div className="flex items-center gap-2">
-                <Avatar className="h-6 w-6">
-                  <AvatarImage src="https://utfs.io/f/f64f1bd4-59ce-4ee3-972d-2399937eeafc-16x.png" />
-                </Avatar>
-                <p className="text-sm">FSW Barber</p>
-              </div>
-            </div>
-
-            {/*DIREITA  */}
-            <div className="flex flex-col items-center justify-center border-l-2 border-solid p-5">
-              <p className="text-sm">Agosto</p>
-              <p className="text-2xl">06</p>
-              <p className="text-sm">09:00</p>
-            </div>
-          </CardContent>
-        </Card>
-
+        <BookingItem />
         <h2 className="mb-3 mt-6 text-xs font-bold uppercase text-gray-400">
           Recomendados
         </h2>
