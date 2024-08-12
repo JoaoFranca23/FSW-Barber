@@ -2,9 +2,9 @@
 import Image from "next/image"
 import { Card, CardContent } from "./ui/card"
 import { Button } from "./ui/button"
-import { Icon, MenuIcon } from "lucide-react"
+import { MenuIcon } from "lucide-react"
 
-const Header = () => {
+const Header = async () => {
   return (
     <Card>
       <CardContent className="itens-center flex flex-row justify-between p-5">
