@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "./ui/button"
 import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet"
@@ -96,15 +97,19 @@ const SidebarSheet = () => {
       </div>
       <div className="flex flex-col gap-4 border-b border-solid p-5">
         {quickSearchOptions.map((option) => (
-          <Button variant="ghost" className="justify-start gap-2">
-            <Image
-              alt={option.title}
-              width={18}
-              height={18}
-              src={option.imageUrl}
-            />
-            {option.title}
-          </Button>
+          <SheetClose key={option.title} asChild>
+            <Button variant="ghost" className="justify-start gap-2" asChild>
+              <Link href={`/barbershops?service=${option.title}`}>
+                <Image
+                  alt={option.title}
+                  width={18}
+                  height={18}
+                  src={option.imageUrl}
+                />
+                {option.title}
+              </Link>
+            </Button>
+          </SheetClose>
         ))}
       </div>
       <div className="flex flex-col gap-4 border-b border-solid p-5">
