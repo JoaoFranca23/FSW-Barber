@@ -29,7 +29,9 @@ const Home = async () => {
         <h2>Ola, Miguel!</h2>
         <p className="text-sm">Sexta,2 de fevereito</p>
         {/* BUSCA */}
-        <Search />
+        <div className="mt-3">
+          <Search />
+        </div>
         {/* BUSCA RAPIDA */}
         <div className="mt-6 flex gap-3 overflow-auto [&::-webkit-scrollbar]:hidden">
           {quickSearchOptions.map((option) => (
