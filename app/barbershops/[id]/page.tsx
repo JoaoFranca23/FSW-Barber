@@ -32,13 +32,14 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
     return notFound()
   }
 
-  const weekDays = [
-    "terça-feira",
-    "quarta-feira",
-    "quinta-feira",
-    "sexta-feira",
-    "sábado",
-  ]
+  // const weekDays = [
+  //   "terça-feira",
+  //   "quarta-feira",
+  //   "quinta-feira",
+  //   "sexta-feira",
+  //   "sábado",
+  // ]
+
   return (
     <div>
       <div className="hidden lg:block">
@@ -172,14 +173,13 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                 <p className="text-sm capitalize">fechado</p>
               </div>
             </div>
-            {weekDays.map((day) => (
+            {/* {weekDays.map((day) => (
               <div className="flex justify-between">
                 <p className="capitalize text-gray-400" key={day}>
                   {day}
                 </p>
-                <p className="text-sm">09:00 - 18:00</p>
               </div>
-            ))}
+            ))} */}
           </div>
 
           <div className="flex w-full items-center justify-between p-3 px-0">
