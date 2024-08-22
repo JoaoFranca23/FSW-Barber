@@ -172,9 +172,9 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                 <p className="text-sm capitalize">fechado</p>
               </div>
             </div>
-            {weekDays.map((day, index) => (
+            {weekDays.map((day) => (
               <div className="flex justify-between">
-                <p className="capitalize text-gray-400" key={index}>
+                <p className="capitalize text-gray-400" key={day}>
                   {day}
                 </p>
                 <p className="text-sm">09:00 - 18:00</p>
