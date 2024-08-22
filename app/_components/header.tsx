@@ -4,8 +4,9 @@ import { Card, CardContent } from "./ui/card"
 import SidebarSheet from "./sidebar-sheet"
 import { Sheet, SheetTrigger } from "./ui/sheet"
 import { Button } from "./ui/button"
-import { CalendarIcon, MenuIcon, UserCircleIcon } from "lucide-react"
+import { CalendarIcon, MenuIcon } from "lucide-react"
 import Link from "next/link"
+import LogInGoogle from "./log-in-google"
 
 const Header = async () => {
   return (
@@ -15,13 +16,12 @@ const Header = async () => {
           <Image alt="FSWBarber" src="/logo.png" width={120} height={18} />
         </Link>
 
-        <div className="hidden gap-5 lg:flex">
-          <Button className="flex items-center gap-2">
+        <div className="hidden items-center gap-10 lg:flex">
+          <Button className="flex items-center gap-5">
             <CalendarIcon /> Agendamentos
           </Button>
-          <Button className="flex items-center gap-2">
-            <UserCircleIcon /> Perfil
-          </Button>
+
+          <LogInGoogle />
         </div>
         <div className="lg:hidden">
           <Sheet>
